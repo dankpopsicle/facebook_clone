@@ -1,0 +1,27 @@
+<h2><%= @user.first_name %> <%= @user.last_name %></h2>
+
+<% if current_user.friends.include?(@user) %>
+  <%= form_with(model: current_user.friendships.find_by(friend_id: @user.id),
+                html: { method: :delete }, remote: true) do |f| %>
+    <%= f.submit "Delete Friend", class: "btn btn-primary" %>
+  <% end %>
+<% elsif current_user.friend_requests.where(user_id: current_user.id, friend_id: @user.id).length >= 1 %>
+  <%= form_with(model: current_user.friend_requests.find_by(friend_id: @user.id),
+                html: { method: :delete }, remote: true) do |f| %>
+    <%= f.submit "Delete Friend Request", class: "btn btn-primary" %>
+  <% end %>
+<% elsif current_user.friend_requests.where(user_id: @user.id, friend_id: current_user.id).length >= 1 %>
+  <%= form_with(model: current_user.friendships.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :user_id, params[:id] %></div>
+    <div><%= hidden_field_tag :friend_id, current_user.id %></div>
+    <%= f.submit "Accept Friend Request", class: "btn btn-primary" %>
+  <% end %>
+<% elsif current_user != @user %>
+  <%= form_with(model: current_user.friend_requests.build, remote: true) do |f| %>
+    <div><%= hidden_field_tag :friend_id, params[:id] %></div>
+    <div><%# hidden_field_tag :user_id, current_user.id %></div>
+    <%= f.submit "Add Friend", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Friends', friendship_path%>

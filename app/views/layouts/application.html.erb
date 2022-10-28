@@ -11,6 +11,35 @@
   </head>
 
   <body>
+    <% if notice %>
+      <span class="notice"><%= notice %></span>
+    <% end %>
+    <% if alert %>
+      <span class="alert"><%= alert %></span>
+    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <%= link_to 'Facebook Clone', root_path, class: 'navbar-brand' %>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to 'Friend Requests', friend_requests_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'View Profile', current_user, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Edit Profile', edit_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+    
     <%= yield %>
+    <%= params %>
   </body>
-</html>
+</html> 
