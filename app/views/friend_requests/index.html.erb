@@ -1,35 +1,64 @@
-<h2>Friend Requests</h2>
+<div class="friend-requests-page">
+  <h2 class="friend-requests-heading">Friend Requests</h2>
 
-<h3>Received Requests: </h3>
+  <div class="container requests-list">
+    <button type="button" 
+            class="friend-request-button-toggle" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#received"
+    >Received Requests
+    </button>
+    <div id="received" class="collapse requests-content">
+      <% if @received_requests.length == 0 %>
+        <p class="no-friend-request-message">You have no incoming friend requests</p>
+      <% else %>
+        <ul class="friend-request-list">
+          <% @received_requests.each do |request| %>
+            <% user = User.find(request.user_id) %>
 
-<ul>
-  <% @received_requests.each do |request| %>
-    <% user = User.find(request.user_id) %>
+            <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: "friend-request-name" %>
+            <%= form_with(model: current_user.friendships.build, remote: true) do |f| %>
+              <div><%= hidden_field_tag :friend_id, request.user_id %></div>
+              <div><%= hidden_field_tag :user_id, current_user.id %></div>
+              <%= f.submit "Accept Friend Request", class: "btn btn-primary btn-sm" %>
+            <% end %>
 
-    <li><%= user.first_name %> <%= user.last_name %>
-    <%= form_with(model: current_user.friendships.build, remote: true) do |f| %>
-      <div><%= hidden_field_tag :friend_id, request.user_id %></div>
-      <div><%= hidden_field_tag :user_id, current_user.id %></div>
-      <%= f.submit "Accept Friend Request", class: "btn btn-primary" %>
-    <% end %>
+            <%= form_with(model: user.friend_requests.find_by(friend_id: request.friend_id),
+                        html: { method: :delete }, remote: true) do |f| %>
+              <%= f.submit "Delete Friend Request", class: "btn btn-primary btn-sm" %>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 
-    <%= form_with(model: current_user.friend_requests.find_by(friend_id: request.friend_id),
-                html: { method: :delete }, remote: true) do |f| %>
-      <%= f.submit "Delete Friend Request", class: "btn btn-primary" %>
-    <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<h3>Sent Requests: </h3>
-  <% @sent_requests.each do |request| %>
-    <% user = User.find(request.friend_id) %>
-    <li><%= user.first_name %> <%= user.last_name %>
-    
-    <%= form_with(model: current_user.friend_requests.find_by(friend_id: request.friend_id),
-                html: { method: :delete }, remote: true) do |f| %>
-      <%= f.submit "Delete Friend Request", class: "btn btn-primary" %>
-    <% end %>
-    </li>
-  <% end %>
-</h3>
+  <div class="container requests-list">
+    <button type="button"
+            class="friend-request-button-toggle"
+            data-bs-toggle="collapse"
+            data-bs-target="#sentRequests"
+    >Sent Requests
+    </button>
+    <div id="sentRequests" class="collapse requests-content">
+      <% if @sent_requests.length == 0 %>
+        <p class="no-friend-request-message">You have no outgoing friend requests</p>
+      <% else %>
+        <ul class="friend-request-list">
+          <% @sent_requests.each do |request| %>
+            <% user = User.find(request.friend_id) %>
+            <li class="friends-in-list">
+              <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: "friend-request-name" %>
+            
+              <%= form_with(model: current_user.friend_requests.find_by(friend_id: request.friend_id),
+                          html: { method: :delete }, remote: true) do |f| %>
+                <%= f.submit "Delete Friend Request", class: "btn btn-primary btn-sm" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>

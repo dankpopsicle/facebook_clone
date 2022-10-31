@@ -16,3 +16,210 @@
 
 
 @import "bootstrap";
+
+* {
+  box-sizing: border-box;
+}
+
+.profile-page-header {
+  padding: 50px;
+  border-bottom: solid;
+  border-bottom-color: black;
+}
+
+.profile-picture {
+  height: 150px;
+  width: 150px;
+  border-style: solid;
+  border-color: black;
+  margin-bottom: 25px;
+}
+
+.name-and-friend-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-name {
+  margin-right: 25px;
+}
+
+.friend-number {
+  text-decoration: none;
+  color: $gray-600;
+}
+
+.friends-list {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.friends-list-heading {
+  align-self: center;
+}
+
+.friends-list-list {
+  list-style-type: none;
+}
+
+.friend-box{
+  background-color: $gray-300;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.friends-list-friend {
+  text-decoration: none;
+  color: black;
+}
+
+.friend-requests-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.friend-requests-heading {
+  align-self: center;
+}
+
+.requests-list {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  margin-bottom: 10px;
+}
+
+.friend-request-button-toggle {
+  background-color: $gray-400;
+  color: black;
+  border-style: none;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 80vw;
+  text-align: left;
+  padding: 10px;
+  align-self: center;
+}
+
+.requests-content {
+  border-style: solid;
+  border-color: $gray-400;
+  border-top-style: none;
+  width: 80vw;
+  align-self: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.friend-request-list {
+  padding: 0px;
+}
+
+.friend-request-name {
+  text-decoration: none;
+  color: $gray-700;
+}
+
+.friend-request-name:hover {
+  color: $gray-600;
+}
+
+.friends-in-list {
+  list-style-type: none;
+  margin: 0px;
+  border-top-style: solid;
+  border-color: $gray-400;
+  padding: 10px;
+}
+
+.no-friend-request-message {
+  padding: 10px;
+}
+
+.friend-request-button-toggle:hover {
+  background-color: $gray-500;
+}
+
+.all-users-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.all-users-list {
+  list-style-type: none;
+}
+
+.all-users-list-name {
+  text-decoration: none;
+  list-style-type: none;
+  color: $gray-700;
+}
+
+.all-users-list-name:hover {
+  color: $gray-600;
+}
+
+.all-users-box {
+  background-color: $gray-400;
+  border-radius: 5px;
+  width: 80vw;
+  display: flex;
+  justify-content:space-between;
+  padding: 10px;
+}
+
+.all-users-list-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  margin-bottom: 3px;
+}
+
+@media only screen and (max-width: 700px) {
+  .profile-page-header {
+    padding: 10px;
+    border-bottom: solid;
+    border-bottom-color: black;
+  }
+  .profile-picture {
+    height: 75px;
+    width: 75px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 10px;
+  }
+
+  .friends-list {
+    padding: 0;
+  }
+
+  .friends-list-heading {
+    margin-top: 10px;
+  }
+
+  .friend-box {
+    margin: 0;
+    margin-bottom: 5px;
+  }
+
+  .friends-list-list {
+    padding: 0px;
+    margin: 10px;
+  }
+
+  .all-users-list {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .all-users-box {
+    margin-bottom: 10px;
+  }
+}

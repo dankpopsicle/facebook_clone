@@ -1,0 +1,17 @@
+<div class="all-users-page">
+
+<h2 class="all-users-heading">All Users</h2>
+
+<% @users.each do |user| %>
+  <ul class="all-users-list">
+    <li>
+      <div class="all-users-box">
+        <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), 
+            class: "all-users-list-name" %>
+        <div class="all-users-list-button">
+          <%= render partial: 'add_friend_button', locals: {user: user}, class: "all-users-button" %>
+        </div>
+      </div>
+    </li>
+  </ul>
+<% end %>

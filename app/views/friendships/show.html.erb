@@ -1,8 +1,13 @@
-<ul>
-  <% @friend.friends.each do |friend| %>
-    <li>
-      <%= link_to "#{friend.first_name} #{friend.last_name}", 
-          user_path(friend)%>
-    </li>
-  <% end %>
-</ul>
+<div class="friends-list">
+  <h2 class="friends-list-heading">Friends List</h2>
+  <ul class="friends-list-list">
+    <% @friend.friends.each do |friend| %>
+      <li>
+        <div class="friend-box">
+          <%= link_to "#{friend.first_name} #{friend.last_name}", 
+              user_path(friend), class: "friends-list-friend" %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
