@@ -1,5 +1,7 @@
 class FriendRequest < ApplicationRecord
-  belongs_to :user
+  after_create :create_notification
+
+  belongs_to :user 
   belongs_to :friend, class_name: "User"
 
   validates :friend_id, presence: true
@@ -24,5 +26,12 @@ class FriendRequest < ApplicationRecord
     if Friendship.where(user_id: self.user_id, friend_id: friend.id).length >= 1
       self.errors.add(:friend, "can't send a request to someone you are friends with")
     end
+  end
+
+  def create_notification
+    Notification.create(user_id: friend.id, interacting_user_id: self.user.id,
+                        content: "has sent you a friend request", 
+                        on_click_url: Rails.application.routes.url_helpers.user_url(self.user, only_path: true),
+                        sent_at: Time.now)
   end
 end

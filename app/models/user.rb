@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships
   has_many :friend_requests
   has_many :pending_friends, through: :friend_requests, foreign_key: :friend_id
+  has_many :notifications
 end

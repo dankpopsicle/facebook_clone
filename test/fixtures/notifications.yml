@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  interacting_user_id: 1
+  content: MyText
+  on_click_url: MyText
+  sent_at: 2022-10-31 15:29:20
+
+two:
+  user_id: 1
+  interacting_user_id: 1
+  content: MyText
+  on_click_url: MyText
+  sent_at: 2022-10-31 15:29:20
