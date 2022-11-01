@@ -62,12 +62,17 @@
 
 .friends-list-list {
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .friend-box{
   background-color: $gray-300;
   border-radius: 15px;
   padding: 10px;
+  width: 40vw;
+  margin-bottom: 10px;
 }
 
 .friends-list-friend {
@@ -88,7 +93,7 @@
   align-self: center;
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 40vw;
   margin-bottom: 10px;
 }
 
@@ -99,7 +104,7 @@
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  width: 80vw;
+  width: 40vw;
   text-align: left;
   padding: 10px;
   align-self: center;
@@ -109,7 +114,7 @@
   border-style: solid;
   border-color: $gray-400;
   border-top-style: none;
-  width: 80vw;
+  width: 40vw;
   align-self: center;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -167,7 +172,7 @@
 .all-users-box {
   background-color: $gray-400;
   border-radius: 5px;
-  width: 80vw;
+  width: 40vw;
   display: flex;
   justify-content:space-between;
   padding: 10px;
@@ -180,6 +185,83 @@
 
 .btn {
   margin-bottom: 3px;
+}
+
+.notifications-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notifications-heading {
+  text-align: center;
+}
+
+.notification-link {
+  text-decoration: none;
+  color: black;
+}
+
+.notification-link:hover {
+  color: $gray-600;
+}
+
+.notifications-box {
+  background-color: $gray-400;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  width: 40vw;
+  padding: 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.post-create-box {
+  width: 40vw;
+  background-color: $gray-400;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.post-list {
+  padding: 0px;
+}
+
+.post-box {
+  list-style-type: none;
+  background-color: $gray-400;
+  border-radius: 10px;
+  width: 40vw;
+  margin: 10px;
+  padding: 10px;
+}
+
+.post-author {
+  margin: 0;
+  padding: 5px;
+}
+
+.post-content {
+  padding: 10px;
+  background-color: white;
+  margin: 0;
+  border-radius: 10px;
+}
+
+.profile-page-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media only screen and (max-width: 700px) {
@@ -207,6 +289,7 @@
   .friend-box {
     margin: 0;
     margin-bottom: 5px;
+    width: 80vw;
   }
 
   .friends-list-list {
@@ -221,5 +304,30 @@
 
   .all-users-box {
     margin-bottom: 10px;
+    width: 80vw;
+  }
+
+  .requests-list {
+    width: 80vw;
+  }
+
+  .friend-request-button-toggle {
+    width: 80vw;
+  }
+
+  .requests-content {
+    width: 80vw;
+  }
+
+  .notifications-box {
+    width: 80vw;
+  }
+
+  .post-create-box {
+    width: 80vw;
+  }
+
+  .post-box {
+    width: 80vw;
   }
 }

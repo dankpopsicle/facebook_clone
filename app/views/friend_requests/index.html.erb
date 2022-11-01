@@ -15,18 +15,18 @@
         <ul class="friend-request-list">
           <% @received_requests.each do |request| %>
             <% user = User.find(request.user_id) %>
-
-            <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: "friend-request-name" %>
-            <%= form_with(model: current_user.friendships.build, remote: true) do |f| %>
-              <div><%= hidden_field_tag :friend_id, request.user_id %></div>
-              <div><%= hidden_field_tag :user_id, current_user.id %></div>
-              <%= f.submit "Accept Friend Request", class: "btn btn-primary btn-sm" %>
-            <% end %>
-
-            <%= form_with(model: user.friend_requests.find_by(friend_id: request.friend_id),
-                        html: { method: :delete }, remote: true) do |f| %>
-              <%= f.submit "Delete Friend Request", class: "btn btn-primary btn-sm" %>
-            <% end %>
+            <li class="friends-in-list">
+              <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), class: "friend-request-name" %>
+              <%= form_with(model: current_user.friendships.build, remote: true) do |f| %>
+                <div><%= hidden_field_tag :friend_id, request.user_id %></div>
+                <div><%= hidden_field_tag :user_id, current_user.id %></div>
+                <%= f.submit "Accept Friend Request", class: "btn btn-primary btn-sm" %>
+              <% end %>
+              
+              <%= form_with(model: user.friend_requests.find_by(friend_id: request.friend_id),
+                          html: { method: :delete }, remote: true) do |f| %>
+                <%= f.submit "Delete Friend Request", class: "btn btn-primary btn-sm" %>
+              <% end %>
             </li>
           <% end %>
         </ul>

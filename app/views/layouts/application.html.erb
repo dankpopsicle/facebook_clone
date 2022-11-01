@@ -34,6 +34,9 @@
         <% if user_signed_in? %>
           <ul class="navbar-nav ms-auto">
             <li>
+              <%= link_to 'Notifications', notifications_path, class: 'nav-link' %>
+            </li>
+            <li>
               <%= link_to 'Users', users_path, class: 'nav-link' %>
             </li>
             <li>

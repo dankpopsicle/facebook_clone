@@ -1,0 +1,29 @@
+<div class="notifications-page">
+  <h2 class="notifications-heading">Notifications</h2>
+  <% @notifications.order(sent_at: :desc).each do |notification| %>
+    <% interacting_user = User.find(notification.interacting_user_id) %>
+    <div class="notifications-box">
+      <div class="notification-time-box">
+        <a href="<%=notification.on_click_url%>" class="notification-link">
+          <% if notification.notification_type == "friend_confirmation" %>
+            <%= notification.content%>
+            <%= interacting_user.first_name %> 
+            <%= interacting_user.last_name%>
+          <% else %>
+            <%= interacting_user.first_name %> 
+            <%= interacting_user.last_name%>
+            <%= notification.content%>
+          <% end %>
+        </a>
+        <p class="notification-time"><%= notification.sent_at %></p>
+      </div>
+      <div class="notification-buttons-box">
+        <% if notification.notification_type == "friend_request" %>
+          <%= render partial: 'shared/add_friend_button', 
+                    locals: {user: interacting_user},
+                    class: "notification-request-buttons" %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

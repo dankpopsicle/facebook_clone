@@ -9,7 +9,7 @@
         <%= link_to "#{user.first_name} #{user.last_name}", user_path(user), 
             class: "all-users-list-name" %>
         <div class="all-users-list-button">
-          <%= render partial: 'add_friend_button', locals: {user: user}, class: "all-users-button" %>
+          <%= render partial: 'shared/add_friend_button', locals: {user: user}, class: "all-users-button" %>
         </div>
       </div>
     </li>

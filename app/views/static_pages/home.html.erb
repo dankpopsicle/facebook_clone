@@ -1,0 +1,27 @@
+<div class="home-page">
+
+  <div class="post-create-box">
+    <%= form_with(model: current_user.posts.build, local: true) do |f| %>
+      <%= f.text_area :content, class: "form-control" %>
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+  <% unless @posts.length == 0%>
+    <% @posts.each do |post| %>
+      <ul class="post-list">
+        <div class="post-box">
+          <li>
+            <p class="post-author"><%= post.user.first_name %> <%= post.user.last_name %></p>
+            <p class="post-content"><%= post.content %></p>
+            <%= form_with(model: current_user.comments.build, local: true) do |f| %>
+              <%= hidden_field_tag "comment[post_id]", post.id %>
+              <%= f.text_area :content, class: "form-control" %>
+            <%= f.submit "Comment", class: "btn btn-primary" %>
+    <% end %>
+          </li>
+        </div>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

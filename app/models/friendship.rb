@@ -1,6 +1,7 @@
 class Friendship < ApplicationRecord
   after_create :create_inverse_relationship
   after_create :destroy_friend_request
+  after_create :create_notification
   after_destroy :destroy_inverse_relationship
 
   belongs_to :user
@@ -44,6 +45,27 @@ class Friendship < ApplicationRecord
     if FriendRequest.where(user_id: self.user_id, friend_id: self.friend_id).length < 1 &&
       FriendRequest.where(user_id: self.friend_id, friend_id: self.user_id).length < 1
       self.errors.add(:friend, "can't add friends without a request")
+    end
+  end
+
+  def create_notification
+    friend = User.find(self.friend_id)
+    if Notification.where(user_id: self.friend_id,
+                              interacting_user_id: self.user_id,
+                              notification_type: "request_response").length == 0
+      Notification.create(user_id: self.user_id, interacting_user_id: self.friend_id,
+                          content: "has accepted your friend request",
+                          on_click_url: Rails.application.routes.url_helpers.user_url(friend, only_path: true),
+                          sent_at: Time.now,
+                          notification_type: "request_response",
+                          status: "unread")
+    else
+      Notification.create(user_id: self.user_id, interacting_user_id: self.friend_id,
+        content: "You are now friends with",
+        on_click_url: Rails.application.routes.url_helpers.user_url(friend, only_path: true),
+        sent_at: Time.now,
+        notification_type: "friend_confirmation",
+        status: "unread")
     end
   end
 end

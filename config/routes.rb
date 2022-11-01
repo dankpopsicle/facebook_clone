@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :friendships
   resources :friend_requests
+  resources :notifications
+  resources :posts
+  resources :comments
+  resources :likes
 end
