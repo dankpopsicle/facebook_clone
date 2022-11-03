@@ -4,7 +4,7 @@ class User < ApplicationRecord
   include Gravtastic
   gravtastic
 
-  after_create :send_confirmation_email
+  #after_create :send_confirmation_email
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
