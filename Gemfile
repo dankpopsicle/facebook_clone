@@ -16,6 +16,12 @@ gem "devise", github: "heartcombo/devise", branch: "main"
 gem "jquery-rails"
 gem "bootstrap"
 gem "sassc-rails"
+gem "font-awesome-rails"
+gem 'gravtastic'
+gem 'figaro'
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
@@ -24,6 +30,7 @@ end
 
 group :development do
   gem "web-console"
+  gem "letter_opener"
   # gem "rack-mini-profiler"
   # gem "spring"
 end

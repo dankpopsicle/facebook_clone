@@ -14,11 +14,14 @@
           <li>
             <p class="post-author"><%= post.user.first_name %> <%= post.user.last_name %></p>
             <p class="post-content"><%= post.content %></p>
-            <%= form_with(model: current_user.comments.build, local: true) do |f| %>
-              <%= hidden_field_tag "comment[post_id]", post.id %>
-              <%= f.text_area :content, class: "form-control" %>
-            <%= f.submit "Comment", class: "btn btn-primary" %>
-    <% end %>
+            <div class="post-features">
+              <%= render partial: 'shared/view_like_button',
+                       locals: { post: post } %>
+              <%= render partial: 'shared/view_comments',
+                        locals: { post: post } %>
+              <%= render partial: 'shared/view_likes',
+                         locals: { post: post } %>
+            </div>
           </li>
         </div>
       </ul>

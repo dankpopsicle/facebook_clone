@@ -264,6 +264,36 @@
   align-items: center;
 }
 
+.comments-toggle {
+  border-style: none;
+  margin-top: 10px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+}
+
+.comment-list {
+  list-style-type: none;
+}
+
+.comment-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.post-features {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.like-button {
+  border-style: none;
+  color: red;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 700px) {
   .profile-page-header {
     padding: 10px;

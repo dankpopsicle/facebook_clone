@@ -1,0 +1,8 @@
+<div class="likes">
+  <%= form_with(model: current_user.likes.build, local: true) do |f| %>
+    <%= hidden_field_tag "like[post_id]", post.id %>
+    <%= button_tag class: "like-button" do %>
+      <i class="fa-solid fa-heart"></i>
+    <% end %>
+  <% end %>
+</div>

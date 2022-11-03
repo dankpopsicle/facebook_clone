@@ -1,0 +1,25 @@
+<div>
+  <button type="button"
+          class="comments-toggle"
+          data-bs-toggle="collapse"
+          data-bs-target="#comments-<%= post.id %>"
+  >Comments
+  </button>
+  <div id="comments-<%= post.id %>" class="collapse">
+    <% post.comments.each do |comment| %>
+      <ul class="comment-list">
+        <div class="comment-box">
+          <li>
+            <p class="commenter-name"><%= comment.user.first_name %> <%=comment.user.last_name%></p>
+            <p class="comment-content"><%= comment.content %></p>
+          </li>
+        </div>
+      </ul>
+    <% end %>
+    <%= form_with(model: current_user.comments.build, local: true) do |f| %>
+      <%= hidden_field_tag "comment[post_id]", post.id %>
+      <%= f.text_area :content, class: "form-control" %>
+      <%= f.submit "Comment", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

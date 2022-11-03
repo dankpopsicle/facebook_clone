@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   resources :friend_requests
   devise_for :users, controllers: {
     #sessions: 'user/sessions'
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'callbacks'
   }
+
+
   root 'static_pages#home'
   resources :users
   resources :friendships

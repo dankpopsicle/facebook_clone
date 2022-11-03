@@ -1,6 +1,7 @@
 <div class="profile-page">
   <div class="profile-page-header container-fluid">
-    <div class="profile-picture"></div>
+    <%# <div class="profile-picture"></div> %>
+    <%= image_tag current_user.gravatar_url, class: "gravatar" %>
 
     <div class="name-and-friend-button">
       <h2 class="user-name"><%= @user.first_name %> <%= @user.last_name %></h2>

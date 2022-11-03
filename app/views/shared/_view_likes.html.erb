@@ -1,0 +1,19 @@
+<div>
+  <button type="button"
+          class="comments-toggle"
+          data-bs-toggle="collapse"
+          data-bs-target="#view-likes-<%= post.id %>"
+  ><%= pluralize(post.likes.count, 'like', plural: 'likes') %>
+  </button>
+  <div id="view-likes-<%= post.id %>" class="collapse">
+    <% post.likes.each do |like| %>
+      <ul class="like-list">
+        <div class="like-name-box">
+          <li>
+            <p><%= like.user.first_name %> <%= like.user.last_name %></p>
+          </li>
+        </div>
+      </ul>
+    <% end %>
+  </div>
+</div>
