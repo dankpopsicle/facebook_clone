@@ -1,12 +1,12 @@
-<div class="bg-light container-fluid">
+<div class="container-fluid log-in-box">
   <h2 class="mb-3">Log in</h2>
 
   <%= form_for(resource, data: { turbo: false}, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%# render "devise/shared/error_messages", resource: resource %>
 
     <div class="field mb-3">
       <%= f.label :email, class: "form-label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %> 
     </div>
 
     <div class="field mb-3">
