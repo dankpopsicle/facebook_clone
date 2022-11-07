@@ -1,24 +1,8 @@
-# README
+Facebook Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a project for the The Odin Project's Ruby on Rails curriculum.
+The goal of this exercise was to create a basic facebook clone where users can 
+add other users as friends, post content, and comment on that content.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The rubric for this project can be found here:
+https://www.theodinproject.com/lessons/ruby-on-rails-rails-final-project
